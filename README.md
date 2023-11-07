@@ -1,2 +1,3 @@
-# telegram-bot-with-crypto-payment
-Telegram bot with integrated payment system
+# nous-psyche-discord-bot
+
+Discord bot with Nous

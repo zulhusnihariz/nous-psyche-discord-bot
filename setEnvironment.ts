@@ -1,4 +1,4 @@
-const REQUIRED_ENV_VARIABLES = ['NODE_ENV', 'TG_TOKEN', 'CRYPTOMUS_API_KEY'];
+const REQUIRED_ENV_VARIABLES = ['NODE_ENV', 'DISCORD_TOKEN'];
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config({

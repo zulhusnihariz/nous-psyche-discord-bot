@@ -1,5 +1,5 @@
 import '@root/setEnvironment';
-import { TgBot } from '@app/modules/tg-bot';
+import { DiscordBot } from '@app/modules/bot';
 
-const bot = new TgBot();
+const bot = new DiscordBot();
 bot.init();
