@@ -1,1 +1,1 @@
-export * from './tg';
+export * from './bot';

@@ -1,21 +1,33 @@
-import { botConfig } from '../../config';
+import { botConfig } from '@app/config';
 import { AbstractCommand } from './commands/abstract.command';
-import { StartCommand } from './commands/start.command';
-import { Client } from 'discord.js';
+import { Client, GatewayIntentBits } from 'discord.js';
+import { AbstractListen } from './listen/abstract.listen';
+import { MessageListen } from './listen/message.listen';
 
 export class DiscordBot {
   bot: Client;
   commands: AbstractCommand[] = [];
+  listeners: AbstractListen[] = [];
 
   constructor() {
-    this.bot = new Client({ intents: [] });
+    this.bot = new Client({
+      intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+      ],
+    });
+    this.bot.on('ready', () => {
+      console.log(`Logged in as ${this.bot.user.tag}!`);
+    });
   }
 
   init() {
-    this.commands.push(new StartCommand(this.bot));
-    this.commands.forEach((command) => {
-      command.handler();
-    });
     this.bot.login(botConfig.TOKEN);
+
+    this.listeners.push(new MessageListen(this.bot));
+    this.listeners.forEach((listener) => {
+      listener.listen();
+    });
   }
 }

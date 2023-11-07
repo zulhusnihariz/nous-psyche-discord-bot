@@ -13,18 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/mesolitica/nous-psyche-discord-bot.git"
   },
-  "keywords": [
-    "tg",
-    "telegram",
-    "crypto",
-    "btc",
-    "eth",
-    "bitcoin",
-    "ethereum",
-    "cryptomus",
-    "payment"
-  ],
-  "author": "CyberEternal",
+  "author": "IqbalBaharum",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mesolitica/nous-psyche-discord-bot/issues"

@@ -6,5 +6,11 @@ export class StartCommand extends AbstractCommand {
     super(bot);
   }
 
-  handler(): void {}
+  handler(): void {
+    this.bot.on('messageCreate', (msg) => {
+      if (msg.content === 'Hello') {
+        msg.reply(`Hello ${msg.author.username}`);
+      }
+    });
+  }
 }
