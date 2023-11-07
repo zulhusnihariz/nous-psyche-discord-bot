@@ -5,18 +5,19 @@ export class NousServiceFactory implements INousService {
   constructor() {}
 
   chat(sender: string, message: string) {
-    return this.sendRequest(sender, message);
+    let prompt = `In the context of Nous Psyche only, and send refuse message for non-related prompt; ${message}`;
+    return this.sendRequest(sender, prompt);
   }
 
   compactChat(sender: string, message: string) {
-    let prompt = `Send back a compact message from this message; ${message}`;
+    let prompt = `In the context of Nous Psyche only and send refuse message for non-related prompt, send back a compact message from this message; ${message}`;
     return this.sendRequest(sender, prompt);
   }
 
   async sendRequest(sender: string, message: string) {
     try {
       const { data } = await axios.post<INousResponseResult[]>(
-        `https://${`khalil-himura-gmail-com-280-rasa`}.nous.mesolitica.com/webhooks/rest/webhook`,
+        `https://${`nouspsyche-mesolitica-com-354-rasa`}.nous.mesolitica.com/webhooks/rest/webhook`,
         { sender, message },
       );
 
