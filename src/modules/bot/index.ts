@@ -3,6 +3,7 @@ import { AbstractCommand } from './commands/abstract.command';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { AbstractListen } from './listen/abstract.listen';
 import { MessageListen } from './listen/message.listen';
+import { GuildMemberAddListen } from './listen/guildmemberadd.listen';
 
 export class DiscordBot {
   bot: Client;
@@ -26,6 +27,7 @@ export class DiscordBot {
     this.bot.login(botConfig.TOKEN);
 
     this.listeners.push(new MessageListen(this.bot));
+    this.listeners.push(new GuildMemberAddListen(this.bot));
     this.listeners.forEach((listener) => {
       listener.listen();
     });
