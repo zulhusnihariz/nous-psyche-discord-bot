@@ -14,19 +14,20 @@ export class MessageListen extends AbstractListen {
         return;
       }
 
-      // Thread msg
-      if (msg.channel.isThread) {
-        let responses = await NousService.compactChat(
-          msg.author.username,
-          msg.content,
-        );
+      // Thread msg disabled for now
+      // if (msg.channel.isThread) {
+      //   let responses = await NousService.compactChat(
+      //     msg.author.username,
+      //     msg.content,
+      //   );
 
-        msg.channel.send(this.processText(msg.author.username, responses));
-        return;
-      }
+      //   msg.channel.send(this.processText(msg.author.username, responses));
+      //   return;
+      // }
 
       // Listen to WH Questions
       if (/\b(what|who|where|when|why|how)\b/i.test(msg.content)) {
+        console.log('test');
         let responses = await NousService.compactChat(
           msg.author.username,
           msg.content,
@@ -37,7 +38,6 @@ export class MessageListen extends AbstractListen {
 
       // User specifically mention bot
       if (msg.mentions.has(this.bot.user)) {
-        console.log('msg');
         let responses = await NousService.chat(
           msg.author.username,
           msg.content,
