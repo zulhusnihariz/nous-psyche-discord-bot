@@ -14,16 +14,15 @@ export class MessageListen extends AbstractListen {
         return;
       }
 
-      // Thread msg disabled for now
-      // if (msg.channel.isThread) {
-      //   let responses = await NousService.compactChat(
-      //     msg.author.username,
-      //     msg.content,
-      //   );
+      if (msg.channel.isThread) {
+        let responses = await NousService.compactChat(
+          msg.author.username,
+          msg.content,
+        );
 
-      //   msg.channel.send(this.processText(msg.author.username, responses));
-      //   return;
-      // }
+        msg.channel.send(this.processText(msg.author.username, responses));
+        return;
+      }
 
       // Listen to WH Questions
       if (/\b(what|who|where|when|why|how)\b/i.test(msg.content)) {
